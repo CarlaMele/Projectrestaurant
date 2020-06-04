@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('navbar.html.twig') }}
+    {{ include('titre.html.twig') }}
+    {{ include('produit/_form.html.twig') }}
+{% endblock %}
+
+{% block title %}
+    {{ titre_page }}
+{% endblock %}

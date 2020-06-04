@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+    <!-- LE COMPOSANT NAVBAR -->
+    {{ include('navbar.html.twig') }}
+    <!-- FIN DU COMPOSANT NAVBAR -->
+    </div>
+    <!-- LE COMPOSANT TITRE -->
+    <div>
+    {{ include('titre.html.twig') }}
+    </div>
+    <!-- FIN DU COMPOSANT TITRE -->
+ <div>  
+{{include("accueil/_commandeCuistot.html.twig")}}
+ </div>
+  
+{% endblock %}

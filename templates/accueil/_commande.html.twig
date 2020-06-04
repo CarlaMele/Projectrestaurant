@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class=" container d-flex justify-content-center">
+    <h4>Commandes clients</h4>
+   </div>
+    <div class="container d-flex justify-content-center">
+    {% for cmd in cmds %}  
+  
+    <div class="tableCom "> 
+        <div class="container col ">
+           <div class="jumbotron row">
+                <table class="table table-striped"> 
+                    <thead class="thead-light"> 
+                    <tr>
+               <th scope="col"></th>
+                    <td>Emails : {{ cmd.user.email}}</td>
+                    </tr>
+                     <tr>
+               <th scope="col"></th>
+                     <td>Code table : {{ cmd.numeroTable }}</td>
+                    </tr>
+                 <tr>
+               <th scope="col"></th>
+                    <td>Heure de commande : {{ cmd.dateCommande |date("m/d/Y", "Europe/Paris")}}</td>
+                    </tr> 
+                </thead>
+        </table> 
+         
+
+         <button class="btn btn-success">
+                <a href="{{path('resto_reglement',{id:cmd.id })}}">Reglement</a>
+        </button>  
+        </div> 
+  </div> 
+ 
+                     
+         {% for message in app.flashes('success') %}
+                       
+                 <p>
+                      <div class="alert alert-success">
+                       {{ message }}
+                      </div>
+                  </p>   
+         {% endfor %}
+</div>
+    {% endfor %} 
+  
+    {# display navigation #}
+    <div class="navigation">
+        <span class="text-center">{{ knp_pagination_render(cmds) }}</span>
+    </div>
+   
+</div>
+<br/>
+{% endblock %}

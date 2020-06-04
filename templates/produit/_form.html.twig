@@ -1,0 +1,59 @@
+
+<div class="container d-flex justify-content-center">
+
+        <div class="form-group">
+            {{form_start(form)}}
+            <legend>Romplisez le formulaire !!!</legend>
+            <div formP>
+             <div class="jumbotron formP">
+            <div class="container">
+                <div class="container d-flex justify-content-center">
+
+                    <fieldset class="fieldset">
+
+                    <div class="row">
+                        <label class="col-sm-6"> <br>
+                            <label class="form-check-label" type= "checkbox">
+                                {{ form_row(form.nomProduit, { 'attr': {'class':'form-control mb-2 mr-md-2'} }) }}
+
+                            </label>
+
+                        </label>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <label class="text-capitalize">
+                                {{ form_row(form.imageFile )}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="text-capitalize">
+                                {{ form_row(form.prixProduit,{ 'attr': {'class':'form-control mb-2 mr-sm-2'} }) }}
+                            </label>
+                        </div>
+                    </div>
+                        <div class="row">
+                        <div class="col-sm-6">
+                            <label class="text-capitalize ">
+                                {{ form_row(form.descriptProduit,{ 'attr': {'class':'form-control mb-2 mr-sm-2'} }) }}
+                            </label>
+</div>
+                    </div>
+
+                    </div>
+                </fieldset>
+            </div>
+</div>
+        </div>
+    
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-success">{{ button|default("Valider") }}</button>
+            </div>
+        </div>
+            {{form_end(form)}}
+    </div>
+</div>

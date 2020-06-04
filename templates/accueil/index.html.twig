@@ -1,0 +1,76 @@
+
+
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block body %}
+
+<nav class="navbar navbar-expand-xl bg-dark navbar-dark container-fluid">
+    <!-- Brand/logo -->
+    <nav class="navbar-nav">
+        <a class="navbar-brand" href="#">
+            <img src="/images/fhesE.png" alt="logo" style="width:75px;">
+        </a>
+    </nav>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="button_admin">
+        <a href="{{ path('resto_admin') }}" class="btn btn-success container p-3 my-3 text-white"role="button" >
+            ‍✋Admin espace
+        </a> 
+        </div>
+       
+        {% elseif is_granted('ROLE_SERVEUR') %}
+    <div class="button_serveur">
+        <a href="{{ path('resto_serveur') }}" class="btn btn-success container p-3 my-3 text-white"role="button" >
+            ‍👌Serveur espace
+        </a>
+        </div>  
+        
+         {% elseif is_granted('ROLE_CUISTOT') %}
+     <div class="button_cuistot">
+        <a href="{{ path('resto_cuistot') }}"  class="btn btn-success container p-3 my-3 text-white"role="button"  >
+            ‍Cuistot espace
+        </a>
+
+        {% elseif is_granted('ROLE_CAISSIER') %}
+    <div class="button_caissier">
+        <a href="{{ path('resto_caissier') }}" class="btn btn-success container p-3 my-3 text-white"role="button" >
+            ‍👌Caissier espace
+        </a>
+        </div>
+
+             {% elseif is_granted('ROLE_CLIENT') %}
+    <div class="button_client">
+        <a href="{{ path('resto_client') }}" class="btn btn-success container p-3 my-3 text-white"role="button" >
+            ‍👌Client espace
+        </a>
+        </div>
+    {% endif %}
+</nav>
+
+<div class="d-flex justify-content-center container p-3 my-3">
+    <h1> {{ message }}! </h1>
+</div>
+
+ <div class="button_accueil">
+        <li class=" container d-flex justify-content-center">
+        <a href="{{path('app_login')}}" class="btn btn-success container p-3 my-3 text-white" role="button">STAFF</a>
+        </li>
+    
+        <li class=" container d-flex justify-content-center">
+        <a href="{{path('app_enregistrement')}}" class="btn btn-success container p-3 my-3 text-white" role="button">CLIENT</a>
+        </li>
+    </div>
+
+
+     <!-- LE COMPOSANT ARTICLES -->
+
+     {#}{ include('accueil/_produits.html.twig') }#}
+
+     <!-- FIN COMPOSANT ARTICLES -->
+ </div>
+    </nav>
+{% endblock %}
+

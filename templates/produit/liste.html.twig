@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste produits
+{% endblock %}
+
+{% block body %}
+    <!-- LE COMPOSANT NAVBAR-->
+    {{include("navbar.html.twig")}}
+    <!-- FIN DU COMPOSANT NAVBAR-->
+
+    <!--LE COMPOSANT TITRE -->
+    {{include("titre.html.twig")}}
+    <!--FIN DU COMPOSANT TITRE -->
+
+    <div class="container d-flex justify-content-center">
+        <div class=" container row">
+        <div class="container col">
+            <div class="button_ajouter">
+                <a href="{{ path('produit_ajouter')}}"class="btn btn-success container p-3 my-3 text-white"role="button">Ajouter produit</a>
+            </div>
+            <div class="jumbotron">
+                  <table class="table table-bordered table-sm">
+                      <thead class=>
+                        <tr class="table-success">
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Image</th>
+                            <th>Prix</th>
+                            <th>Description</th>
+                            <th colspan="2">Actions</th>
+                        </class=>
+                        </thead>
+                        <tbody class="tbody">
+                        {% for produit in produits | sort  %}
+                        <tr>
+                        <td>{{produit.id}}</td>
+                        <td>{{produit.nomProduit}}</td>
+                        <td>{{produit.imageProduit}}</td>
+                        <td>{{produit.prixProduit}}</td>
+                        <td>{{produit.descriptProduit}}</td>
+                    <td>
+                        <button class="primary btn btn-success">
+                            <a href="{{path('produit_modifier',{id:produit.id })}}" class="produitActionModifier"><i class="fas fa-pen-fancy"></i></a>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="primary btn btn-success">
+                            <a href="{{path('produit_supprimer',{id:produit.id })}}"class="produitActionSupprimer">  <i class="fas fa-trash"></i></a>
+                        </button>
+                    </td>
+                        </tr>
+                {% else %}
+                    Aucun produit trouvé.
+                {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <br>
+                {# display navigation #}
+                <div class="navigation">
+				<span class="text-center">{{ knp_pagination_render(produits) }}</span>
+			                </div>
+                     </div>
+               </div>
+         </div>
+    </div>
+{% endblock %}

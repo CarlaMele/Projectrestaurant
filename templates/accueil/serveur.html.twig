@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <!-- LE COMPOSANT NAVBAR -->
+
+  {{ include('navbar.html.twig') }}
+
+  <!-- FIN DU COMPOSANT NAVBAR -->
+
+  <!-- LE COMPOSANT TITRE -->
+
+  {{ include('titre.html.twig') }}
+
+    {{include("accueil/_commande.html.twig")}}
+       
+  <!-- FIN DU COMPOSANT TITRE -->
+
+  
+
+{% endblock %}

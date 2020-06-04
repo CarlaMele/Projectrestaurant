@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container ">
+    <div class="container-fluid bg-3 text-center">
+        <div class="row ">
+        {% for produit in produits %}
+            <div class="jumbotron produit">
+                <div class="panel panel-primary">
+                    <div class="panel-heading produit_nom">
+                        <h4>
+                            {{ produit.nomProduit }}
+                        </h4>
+                    </div>
+
+                <div class="panel-body">    
+                    <img src="{{asset('assets/img/produits/')}}{{produit.imageProduit}}"
+                     alt="photo {{produit.imageProduit}}"  
+                     style="width:100%"/>
+                    </div>
+
+                    <div class="produit_price">
+                    <a href="{{ path('panier_ajouter',{id: produit.id}) }}">
+                        {{ produit.prixProduit }} €<span class="emoji-right">🛒</span>
+                    </a>
+                    </div>
+
+                    <div class="panel-footer">
+                        <a href="#" class="cell auto produit_detail_lien">
+                            <span class="emoji-right">{{ produit.descriptProduit }} 👉</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <br/>
+        {# display navigation #}
+    <div class="navigation">
+        <span class="text-center">{{ knp_pagination_render(produits) }}</span>
+    </div>
+
+    </div>
+</div>
+    <br/>
+    {% endblock %}

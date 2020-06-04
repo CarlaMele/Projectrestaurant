@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+  
+                <h4>listes clients :</h4>
+    {% for client in clients %}
+         <div>
+               <div class="row"> 
+               <ul>   
+                  
+              <li>{{ client.email }}</li>
+            
+               </ul>
+               </div> 
+               
+         </div>
+    {% endfor %}
+ 
+  {# display navigation #}
+  <div class="navigation">
+    <span class="text-center">{{ knp_pagination_render(clients) }}</span>
+  </div>
+</div><br />
+
+{% endblock %}

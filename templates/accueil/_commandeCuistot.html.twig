@@ -1,0 +1,31 @@
+<div class="container d-flex justify-content-center">
+     
+                <h4>Commandes en cours de préparation...:</h4>
+            </div>        
+    {% for cmd in cmds %}
+      <div class="container d-flex justify-content-center">
+               <div class="row jumbotron "> 
+               <ul>
+                        <li>Emails : {{ cmd.user.email}}</li>
+                        <li>N° de table : {{ cmd.numeroTable }}</li>
+                        <li>Heure de commande : {{ cmd.dateCommande |date("d/m/Y", "Europe/Paris")}}</li>
+                        <button class="btn btn-danger">
+                              <a href="{{path('resto_pret',{id:cmd.id })}}">Pret 🕐</a>
+                        </button>
+                     <p>
+                        {% for message in app.flashes('success') %} 
+                      
+                              <div class="alert alert-success">
+                                  {{ message }}
+                              </div>
+                              </p>  
+                         </ul> 
+                      {% endfor %}   
+          </div>
+    {% endfor %}
+
+  {# display navigation #}
+  <div class="navigation">
+    <span class="text-center">{{ knp_pagination_render(cmds) }}</span>
+  </div>
+</div><br/>

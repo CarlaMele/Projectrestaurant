@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrement{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-center container p-3 my-3">
+    <div class="form">
+    {{ form_start(form) }}
+    {{ form_row(form.email,{ 'attr': {'class':'form-control mb-2 mr-sm-2'} }) }}<br>
+   
+    {{ form_row(form.codeInterface,{ 'attr': {'class':'form-control mb-2 mr-sm-2'} }) }}<br>
+       <h2> le code a saisir  est le suivant: {{ code }}!!! </h2> 
+       
+        <button class="primary btn btn-success">Enregistrement</button> 
+       
+    </div>
+
+    {{ form_end(form) }}
+
+</div>
+
+{% endblock %}

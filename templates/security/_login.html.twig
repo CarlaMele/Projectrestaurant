@@ -1,0 +1,30 @@
+<div class="formulaire">
+<div class="container p-3 my-3 ">
+    <h3 >Rentrez votre email et votre code</h3>
+    <form method="post">
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" value="{{ last_username }}" id="email" placeholder="Rentrez votre email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Code interface:</label>
+            <input type="password" class="form-control" id="codeInterface" placeholder="Rentrez votre code" name="code_interface" required>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}">
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="remember"> Remember me
+            </label>
+        </div>
+
+          <button class="btn btn-success" type="submit">
+                Valider</button>  
+    </form>
+</div>
+</div>
